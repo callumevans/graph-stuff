@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="dist/tachyon.js"></script>
+
+    <style>
+        .tch-box {
+            position: absolute;
+            height: 80px;
+            border: 1px solid blue;
+            min-width: 200px;
+        }
+
+        .tch-box.entry {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+<p onclick="run()">Click</p>
+<div id="graph"></div>
+<script>
+
+    var manager = new tachyon.GraphManager();
+
+    manager.initialise(document.getElementById('graph'), function () {
+        manager.addNode(new tachyon.StartNode());
+        manager.addNode(new tachyon.MiddleNode());
+        manager.addNode(new tachyon.MiddleNode());
+    })
+
+    function run() {
+        tachyon.GraphReader.execute(manager.graphData);
+    }
+</script>
+</body>
+</html>
